@@ -1,9 +1,12 @@
-package com.controlestoque.api_estoque.model;
+package com.controlestoque.api_estoque.Entitys;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_estoques")
+
 public class Estoque {
 
     @Id
@@ -12,20 +15,23 @@ public class Estoque {
 
     private Integer quantidade;
 
-    // Relacionamento 1:1 - lado proprietário (contém a FK)
+    // relacionamento 1:1 (um-para-um)//
+    // E o lado 'proprietário' que contém a chave estrangeira (FK)
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "produto_id", nullable = false)
+    @JoinColumn(name = "produto_id", nullable = false) // Define a FK na tabela 'tb_estoques'
+    @JsonBackReference
     private Produto produto;
 
-    // Construtores
-    public Estoque() {}
+    // Construtores, getters e setters
 
-    public Estoque(Integer quantidade, Produto produto) {
-        this.quantidade = quantidade;
-        this.produto = produto;
+    public Estoque() {
     }
 
-    // Getters e Setters
+    public Estoque(Produto produto, Integer quantidade) {
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
+
     public Long getId() {
         return id;
     }
@@ -49,4 +55,5 @@ public class Estoque {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
 }

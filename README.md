@@ -1,35 +1,94 @@
+# API REST – Controle de Estoque
 
-https://github.com/user-attachments/assets/87df2010-af9b-4b39-9aa9-8e17c814505b
-📦 API REST - Controle de Estoque
-🚀 Rotas da API
-Categorias
-GET    /api/categorias          - Lista todas as categorias
-GET    /api/categorias/{id}     - Busca categoria por ID
-POST   /api/categorias          - Cria nova categoria
-PUT    /api/categorias/{id}     - Atualiza categoria
-DELETE /api/categorias/{id}     - Remove categoria
+## 🚀 Rotas da API
 
-📝 Exemplos de JSON
-Criar Categoria
+### 📂 Categorias
+GET /api/categorias  
+GET /api/categorias/{id}  
+POST /api/categorias  
+PUT /api/categorias/{id}  
+DELETE /api/categorias/{id}  
 
-POST /api/categorias
+### 🏭 Fornecedores
+GET /api/fornecedores  
+GET /api/fornecedores/{id}  
+POST /api/fornecedores  
+PUT /api/fornecedores/{id}  
+DELETE /api/fornecedores/{id}  
 
+### 📦 Produtos
+GET /api/produtos  
+GET /api/produtos/{id}  
+POST /api/produtos  
+PUT /api/produtos/{id}  
+DELETE /api/produtos/{id}  
+
+### 👥 Clientes
+GET /api/clientes  
+GET /api/clientes/{id}  
+POST /api/clientes  
+PUT /api/clientes/{id}  
+DELETE /api/clientes/{id}  
+
+### 💰 Vendas
+GET /api/vendas  
+GET /api/vendas/{id}  
+POST /api/vendas  
+
+## 📝 Exemplos de JSON
+
+### Criar Categoria
+```json
 {
   "nome": "Eletrônicos"
 }
-
+Criar Fornecedor
+json
+Copy code
+{
+  "nome": "TechSupply Inc"
+}
+Criar Produto
+json
+Copy code
+{
+  "nome": "Notebook Gamer Pro",
+  "preco": 4500.00,
+  "categoria": { "id": 1 },
+  "fornecedores": [{ "id": 1 }],
+  "estoque": { "quantidade": 15 }
+}
+Criar Cliente
+json
+Copy code
+{
+  "nome": "João Silva",
+  "email": "joao@email.com",
+  "telefone": "(19) 99999-9999"
+}
+Registrar Venda
+json
+Copy code
+{
+  "clienteId": 1,
+  "itens": [
+    {
+      "produtoId": 1,
+      "quantidade": 2
+    }
+  ]
+}
 ⚙️ Como Executar
-1️⃣ Configurar o banco de dados no application.properties:
-spring.datasource.url=jdbc:mysql://localhost:3306/estoque_db
-spring.datasource.username=root
+1. Configure o banco em application.properties
+properties
+Copy code
+spring.datasource.username=SEU_USUARIO
 spring.datasource.password=SUA_SENHA
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
-2️⃣ Executar o projeto
+2. Execute o projeto
+bash
+Copy code
 mvn spring-boot:run
-
-
-👉 A API estará disponível em:
+URL base
+arduino
+Copy code
 http://localhost:8080

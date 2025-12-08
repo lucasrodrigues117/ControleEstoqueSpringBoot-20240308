@@ -1,3 +1,9 @@
+
+
+
+https://github.com/user-attachments/assets/8720a6e5-0d78-4334-a967-db9148a4ba58
+
+
 # API REST – Controle de Estoque
 
 ## 🚀 Rotas da API
